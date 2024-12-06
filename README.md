@@ -16,6 +16,7 @@ pacman -Syu
 pacman -S --needed base-devel mingw-w64-x86_64-toolchain mingw-w64-x86_64-cmake gcc gdb
 ```
 添加环境变量
+
 ![环境变量](./img/environment%20variables.PNG)
 
 #### 安装CMake
