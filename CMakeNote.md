@@ -20,8 +20,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 * target_link_libraries(<target> <libraries> ... )
 
 ### 指定头文件的搜索路径，方便编译器查找相应头文件
-* nclude_directories(<dirs> ... )
-* nclude_directories(${packageName_INCLUDE_DIRS})
+* include_directories(<dirs> ... )
+* include_directories(${packageName_INCLUDE_DIRS})
 
 ### 创建一个库（静态库或动态库）及其源文件
 * add_library(<target> <source_files> ... )
