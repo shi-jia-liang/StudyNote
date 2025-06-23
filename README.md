@@ -271,13 +271,15 @@ $W_{out} = (W_{in}-1) * stride[1] - 2 * padding[1] + dilation[1] * (kernel\_size
 当损失函数的loss值减少较少时，停止训练
 #### 恢复机制 
 当出现特殊情况而停止训练后，使用恢复机制继续训练模型，继续迭代
-#### 进度条
-使用tqdm()函数
 #### 训练参数[总样本数 N] → [Batch Size B] → [Iterations per Epoch = N/B] → [Epochs E]
 * 样本(Sample):单个训练数据单元
 * 批大小(Batch Size):每次输入模型的样本数量[Tensor的通道排序:`[batch, channel, height, width]`中的`batch`即Batch Size]
 * 迭代次数(Iteration):完成一次模型参数更新所需的批次处理次数
 * 训练轮次(epoch):完整遍历一次训练集的过程,小训练集多次训练能防止欠拟合
+
+### 进度条库
+使用tqdm()函数
+
 ---
 ## 关于大模型微调技术
 ### 全量微调 VS LoRA微调
