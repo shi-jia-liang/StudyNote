@@ -131,6 +131,15 @@ pip install ultralytics
 
 ---
 ## 关于深度学习
+
+### 神经网络模型搭建
+&emsp;&emsp;nn.Squential是一个序列容器，用于搭建神经网络的模块按照顺序添加到容器中，即将多个模块封装成一个模块。
+* nn.Sequetial: 按顺序包装多个网络层
+* nn.ModuleList: 按python的list一样包装多个网络层
+* nn.ModuleDict: 按python的dict一样包装多个网络层
+
+### 前方反馈网络
+
 ### 误差反向传播
 &emsp;&emsp;由输出层误差推前一层误差，~~将复杂的求导过程通过拉格朗日多项式化为简单的减法过程~~。  
 &emsp;&emsp;在残差网络ResNet发明之前，存在梯度爆炸和梯度消失。这是因为在计算过程中，由于误差反向传播后会乘后一层误差，当神经网络层数较大时，其误差也会成指数型增大或减少。
@@ -164,9 +173,11 @@ BN层（Batch Normalization）用于调整特征层满足正态分布规律。
 ### RNN循环神经网络
 经典模型:LSTM(Super Max版RNN)
  
-### Attention注意力模型（Transform）
+### Attention注意力模型（Transformer）
 
-### GNN图神经网络 
+### GNN图神经网络
+
+### GAN对抗生成网络
 
 ### VGG 
 &emsp;&emsp;**要点：具有相同的感受野，同样提取了大卷积核的图像特征，且计算参数少**
@@ -181,11 +192,12 @@ BN层（Batch Normalization）用于调整特征层满足正态分布规律。
 
 ### Pytorch 和 TensorFlow
 ![深度学习架构](./img/deeplearn.PNG)
-* Pytorch Tensor的通道排序:`[batch, channel, height, width]`
-  batch：一批图像的数量
-  channel：图像的深度（RGB图像有3个通道深度）
-  height：图像的高度
-  width：图像的宽度
+* Pytorch Tensor
+* 图像处理的常见通道排序:`[B, C, H, W]`
+  batch(B)：一批图像的数量
+  channel(C)：图像的深度（RGB图像有3个通道深度）
+  height(H)：图像的高度
+  width(W)：图像的宽度 
 
 ### 图像分类
 
@@ -277,8 +289,36 @@ $W_{out} = (W_{in}-1) * stride[1] - 2 * padding[1] + dilation[1] * (kernel\_size
 * 迭代次数(Iteration):完成一次模型参数更新所需的批次处理次数
 * 训练轮次(epoch):完整遍历一次训练集的过程,小训练集多次训练能防止欠拟合
 
-### 进度条库
-使用tqdm()函数
+### model.train() VS model.eval() VS torch.no_grad()
+* model.train():设置模型为训练模式
+1. 训练模式中，BatchNorm 会计算当前批次的均值和方差，并更新运行均值（running mean）和方差（running variance）
+2. 训练模式中，Dropout 会随机将部分神经元置零，以防止过拟合
+* model.eval():设置模型为评价模式
+1. 评价模式中，BatchNorm 使用之前累积的运行均值和方差，不再更新
+2. 评价模式中，Dropout 被禁用，所有神经元都会参与计算
+* torch.no_grad()
+禁用梯度更新，一般使用在 *model.eval()* 阶段中。用于节省内存和计算资源。
+
+### 损失函数
+* L1范数损失 **l1_loss**
+* **huber_loss**
+* 平滑版L1损失 **smooth_l1_loss**
+* 均方误差损失 **mse_loss**
+* **margin_ranking_loss**
+* **hinge_embedding_loss**
+* **multilabel_margin_loss**
+* **soft_margin_loss**
+* **multilabel_soft_margin_loss**
+* **cosine_embedding_loss**
+* **multi_margin_loss**
+* 交叉熵损失 **cross_entropy** :当训练有 C 个类别的分类问题时很有效. 可选参数 weight 必须是一个1维 Tensor, 权重将被分配给各个类别. 对于不平衡的训练集非常有效。
+* 二进制交叉熵损失 **binary_cross_entropy** :二分类任务时的交叉熵计算函数。用于测量重构的误差, 例如自动编码机. 注意目标的值 t[i] 的范围为0到1之间.
+* 带有 Logits 的二元交叉熵 **binary_cross_entropy_with_logits** :BCEWithLogitsLoss损失函数把 Sigmoid 层集成到了 BCELoss 类中. 该版比用一个简单的 Sigmoid 层和 BCELoss 在数值上更稳定, 因为把这两个操作合并为一个层之后, 可以利用 log-sum-exp 的 技巧来实现数值稳定.
+* 散度损失 **kl_div** :KL 散度可用于衡量不同的连续分布之间的距离, 在连续的输出分布的空间上(离散采样)上进行直接回归时 很有效。
+* 连接时序分类损失 **ctc_loss** :可以对没有对齐的数据进行自动对齐，主要用在没有事先对齐的序列化数据训练上。比如语音识别、ocr识别等。
+* 负对数似然损失 **nll_loss** :用于训练 C 个类别的分类问题。
+* 目标值为泊松分布的负对数似然损失 **poisson_nll_loss**
+* 目标值为高斯分布的负对数似然损失 **gaussian_nll_loss**
 
 ---
 ## 关于大模型微调技术
