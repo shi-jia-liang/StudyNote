@@ -45,18 +45,18 @@ git clone https://github.com/gaowenliang/code_utils
 * mat_io_test.cpp
 ```bash
 # 33 |
-Mat img1 = imread( "/home/gao/IMG_1.png", IMREAD_UNCHANGED );
+Mat img1 = imread( "/home/gao/IMG_1.PNG", IMREAD_UNCHANGED );
 ```
 * sumpixel_test.cpp
 ```bash
 # 2 |
 include "code_utils/backward.hpp"
 # 84 |
-Mat img1 = imread( "/home/gao/IMG_1.png", IMREAD_GRAYSCALE );
+Mat img1 = imread( "/home/gao/IMG_1.PNG", IMREAD_GRAYSCALE );
 # 94 |
 normalize( img, img2, 0, 255, NORM_MINMAX );
 # 107 |
-Mat img1 = imread( "/home/gao/IMG_1.png", IMREAD_GRAYSCALE );
+Mat img1 = imread( "/home/gao/IMG_1.PNG", IMREAD_GRAYSCALE );
 # 117 |
 normalize( img, img2, 0, 255, NORM_MINMAX );
 ```
