@@ -42,3 +42,48 @@ Kornia 是一款基于 PyTorch 的可微分的计算机视觉库。
 tqdm 是 python 中用于显示进度条的模块，它常被用于显示训练、评估数据集的进度。
 * 安装：pip install tqdm
 * 使用：**from tqdm import tqdm**
+
+# pytorch_lightning模块
+Pytorch Lightning 是一个基于PyTorch的高级深度学习框架，旨在将科研代码的灵活性与工程化最佳实习结合，通过标准化训练流程大幅减少模板代码。
+* 安装：pip install pytorch_lightning
+* 使用：**import pytorch_lightning as pl**
+1. 定义`LightningDataModule`加载数据模块 class datasets(pl.LightningDataModule):  
+	step1：初始化 def \_\_init\_\_(self):   
+	step2：下载数据集(可选) def prepare_data(self):  
+	step3：划分数据集 def setup(self, stage: Optional[str] = None):  
+	step4：加载训练数据集 def train_dataloader(self):  
+	step5：加载验证数据集 def val_dataloader(self):  
+	step6：加载测试数据集 def test_dataloader(self):  
+2. 定义`LightningModule`模型模块 class model(pl.LightningModule):  
+	step1：初始化 def \_\_init\_\_(self):  
+	step2：前向推理 def forward(self, x):  
+	step3：设置优化器 def configure_optimizers(self):  
+	step4：训练过程 def training_step(self, train_batch, batch_idx):  
+	step5：验证过程 def validation_step(self, val_batch, batch_idx):  
+	step6：反向学习 def backward(self, x):  
+3. 定义`Trainer()`类 trainer=pl.Trainer()
+	* 基础参数配置
+		* max_epochs：最大训练轮次
+		* min_epochs：最小训练轮次
+		* max_steps：最大训练步数
+		* min_steps：最小训练步数
+		* accelerator：硬件加速器（`CPU`, `GPU`, `TPU`, `auto`）
+		* devices：训练的设备数量
+	* 训练参数配置
+		* gradient_clip_val：梯度裁剪阈值
+		* accumulate_grad_batches：梯度累积步数（模拟更大batch）
+		* limit_train_batches：限制每epoch训练batch数（如 0.1 表示10%）
+		* limit_val_batches：限制验证batch数
+		* val_check_interval：验证频率（1.0=每epoch，0.5=每半个epoch）
+		* check_val_every_n_epoch：每N轮验证一次（默认 1）
+		* fast_dev_run：快速运行少量batch（如 True 或 5）
+		* overfit_batches：过拟合少量batch（测试代码）
+		* precision：精度
+	* 回调日志
+		* logger：日志器（`TersonBoardLogger`, `WandbLogger`, `CometLogger`, `MLFlowLogger`, `NeptuneLogger`）
+		* callbacks：回调列表（`ModelCheckpoint`(保存模型权重), `EarlyStopping`(早停机制)）
+		* log_every_n_steps：每N步记录一次日志（默认 50）
+4. 定义trainer.fit(model=`model`, train_dataloaders=`train_dataloader`, val_dataloaders=`val_dataloader`)  
+	开始训练  
+
+模型权重文件格式转换：`.pt`, `.onnx`, `ckpt` 
