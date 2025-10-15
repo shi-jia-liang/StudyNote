@@ -145,11 +145,11 @@ pip install ultralytics
 &emsp;&emsp;在残差网络ResNet发明之前，存在梯度爆炸和梯度消失。这是因为在计算过程中，由于误差反向传播后会乘后一层误差，当神经网络层数较大时，其误差也会成指数型增大或减少。
 
 ### 残差网络ResNet
-&emsp;&emsp;**要点：超深的网络结构（突破1000层）；提出Residual模块；使用Batch Normalization加速训练（丢弃Dropout）**
-&emsp;&emsp;在残差网络ResNet发明之前，由于存在梯度爆炸和梯度消失，神经网络一直发展不起来。
-&emsp;&emsp;残差网络ResNet解决的问题，降低由于神经网络层较大时，直接使用残差网络将误差系数变小。
-&emsp;&emsp;1x1的卷积层是用于降维或者升维的。输入RGB图像，其维度为3。经过一层卷积层有256个卷积核之后，其维度变为256。1x1的卷积层在不改变特征矩阵的矩阵大小的情况下，对矩阵进行降维或者升维操作。
-BN层（Batch Normalization）用于调整特征层满足正态分布规律。
+&emsp;&emsp;**要点：超深的网络结构（突破1000层）；提出Residual模块；使用Batch Normalization加速训练（丢弃Dropout）**  
+&emsp;&emsp;在残差网络ResNet发明之前，由于存在梯度爆炸和梯度消失，神经网络一直发展不起来。  
+&emsp;&emsp;残差网络ResNet解决的问题，降低由于神经网络层较大时，直接使用残差网络将误差系数变小。  
+&emsp;&emsp;1x1的卷积层是用于降维或者升维的。输入RGB图像，其维度为3。经过一层卷积层有256个卷积核之后，其维度变为256。1x1的卷积层在不改变特征矩阵的矩阵大小的情况下，对矩阵进行降维或者升维操作。  
+&emsp;&emsp;BN层（Batch Normalization）用于调整特征层满足正态分布规律。
 
 #### 跳跃连接 和 残差学习
 * 跳跃连接：`torch.cat`。用于特征融合，其维度`channel`会发生变化，为`x1.ch + x2.ch`。
@@ -172,8 +172,6 @@ BN层（Batch Normalization）用于调整特征层满足正态分布规律。
 
 ### RNN循环神经网络
 经典模型:LSTM(Super Max版RNN)
- 
-### Attention注意力模型（Transformer）
 
 ### GNN图神经网络
 
@@ -231,7 +229,7 @@ BN层（Batch Normalization）用于调整特征层满足正态分布规律。
 * 将卷积核参数旋转180°翻转
 * 做正常的卷积运算  
 &nbsp;
-torch.nn.ConvTranspose2d图像矩阵计算公式
+torch.nn.ConvTranspose2d图像矩阵计算公式  
 $H_{out} = (H_{in}-1) * stride[0] - 2 * padding[0] + dilation[0] * (kernel\_size[0] - 1) + output\_padding[0] + 1$
 $W_{out} = (W_{in}-1) * stride[1] - 2 * padding[1] + dilation[1] * (kernel\_size[1] - 1) + output\_padding[1] + 1$
 * H、W：图像尺寸
