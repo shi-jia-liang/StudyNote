@@ -198,4 +198,6 @@ rosrun tf2_tools view_frames.py
 ---
 
 ## TF坐标变换
-在坐标变换实现中常用的msg：`geometry_msgs/TransformStamped` 和 `geometry_msgs/PointStamped`。前者用于传输坐标系相关信息，后者用于传输某个坐标系内坐标点的信息。在坐标变换中，频繁的需要使用到坐标系的相对关系以及坐标点信息。
+在坐标变换实现中常用的msg：`geometry_msgs/TransformStamped` 和 `geometry_msgs/PointStamped`。  
+前者用于传输坐标系相关信息，后者用于传输某个坐标系内坐标点的信息。  
+在坐标变换中，频繁的需要使用到坐标系的相对关系以及坐标点信息。

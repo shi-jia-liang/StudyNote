@@ -1,6 +1,19 @@
 # Attention注意力模型（Transformer）
-**Attention**是*Transformer*模型的核心机制。Attention本质是一种“加权聚焦”机制，让模型在处理信息时能重点关注输入中与当前任务更相关的部分，计算公式则量化了这种相关性权重。它通过计算“查询（Query）”与“键（Key）”的相似度，给不同的“值（Value）”分配不同权重，最终输出加权后的信息。
+![Transformer model](./img/Transformer.jpg)
+
+该模型的输入和输出遵循**相同尺寸**的原则，因此能无限层叠。
+## 位置编码PositionalEncoding
+**PositionalEncoding**是*Transformer*模型的前置模块。它帮助*Transformer*模型具有排列不变性，将输入的词向量带有了相对或者绝对位置的信息。  
+
+位置编码需要满足三个核心约束：
+1. 唯一位置标识：每个位置有唯一的编码向量
+2. 相对位置表示能力：位置`pos+k`的编码可表示为`pos`编码的线性函数
+3. 序列长度外推：能处理超过训练长度的序列  
+
+这些约束直接指导了正弦编码的选择。关键在于：正弦函数满足`sin(A+B)=sinAcosB+cosBsinA`，使得相对位置信息可线性表示。
 ## Attention
+**Attention**是*Transformer*模型的核心机制。Attention本质是一种“加权聚焦”机制，让模型在处理信息时能重点关注输入中与当前任务更相关的部分，计算公式则量化了这种相关性权重。它通过计算“查询（Query）”与“键（Key）”的相似度，给不同的“值（Value）”分配不同权重，最终输出加权后的信息。  
+
 核心作用是解决传统模型处理长序列时“信息稀疏”的问题，让模型能动态捕捉输入中关键的依赖搞关系。
 * **Q**：Query 查询矩阵，维度：**query_len**（查询数量） * **att_dim**（特征维度），每一行 *(seq_len)* 代表token
 * **K**：Key 关键点矩阵，维度：**word_value**(键值对数量) * **att_dim**（特征维度）
@@ -13,5 +26,3 @@
 Self-Attention是Attention的一种特殊形式，核心是“查询、键、值来自同一输入”，即模型对自身输入序列内部的元素计算相关性。
 ## Cross-Attention
 Cross-Attention是Attention的一种特殊形式，核心是“查询、键、值来自不同输入”，即模型对自身输入序列内部的元素计算相关性。其中，查询来自某一输入，键、值来自另一个输入。
-
-## 位置编码PositionalEncoding
