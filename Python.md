@@ -43,6 +43,56 @@ tqdm 是 python 中用于显示进度条的模块，它常被用于显示训练�
 * 安装：pip install tqdm
 * 使用：**from tqdm import tqdm**
 
+# pytorch模块
+PyTorch 是一个开源的深度学习框架，广泛应用于计算机视觉、自然语言处理等领域。它由 Facebook 的人工智能研究团队开发，提供了灵活且高效的张量计算和自动微分功能。  
+* 安装：[Pytorch](https://pytorch.org/) # 建议选择GPU版本，根据CUDA版本选择对应命令
+* 使用：**import torch torchvision**
+## from torch import nn
+构建和训练神经网络的核心模块，它提供了丰富的类和函数来定义和操作神经网络。
+### 神经网络模型 nn.Module
+nn.Module是所有自定义神经网络模型的基类。用户通常会从这个类派生自己的模型类，并在其中定义网络层结构以及前向传播函数（forward pass）。
+#### 预定义神经网络模型 nn.Modules
+nn.Modules是nn.Module的子类，用于定义神经网络中的各种层和操作。常见的nn.Modules包括：
+* 全连接层（`nn.Linear`）
+* 卷积层（`nn.Conv1d`, `nn.Conv2d`, `nn.Conv3d`）
+* 池化层（`nn.MaxPool2d`, `nn.AvgPool2d`）
+* 归一化层（`nn.BatchNorm2d`, `nn.LayerNorm`）
+* 激活函数（`nn.ReLU`, `nn.Sigmoid`, `nn.Tanh`）
+### 自定义神经网络模型 nn.Sequential
+nn.Sequential是序列容器，用于搭建神经网络的模块按照顺序添加到容器中，即将多个模块封装成一个模块。
+
+以下是三种常用的模块封装方式：
+
+* nn.Sequential: 允许将多个层按顺序组合起来，形成简单的线性堆叠网络
+* nn.ModuleList: 按python的list一样包装多个网络层，可以动态地存储和访问子模块
+* nn.ModuleDict: 按python的dict一样包装多个网络层，可以动态地存储和访问子模块
+
+### 损失函数（Loss Functions）
+#### 分类损失函数
+#### 回归损失函数
+* L1范数损失 **l1_loss**
+* **huber_loss**
+* 平滑版L1损失 **smooth_l1_loss**
+* 均方误差损失 **mse_loss**
+* **margin_ranking_loss**
+* 铰链嵌入损失 **hinge_embedding_loss**
+* 多分类间隔损失 **multilabel_margin_loss**
+* **soft_margin_loss**
+* **multilabel_soft_margin_loss**
+* **cosine_embedding_loss**
+* **multi_margin_loss**
+* 交叉熵损失 **cross_entropy** :当训练有 C 个类别的分类问题时很有效. 可选参数 weight 必须是一个1维 Tensor, 权重将被分配给各个类别. 对于不平衡的训练集非常有效。
+* 二分类交叉熵损失 **binary_cross_entropy** :二分类任务时的交叉熵计算函数。用于测量重构的误差, 例如自动编码机. 注意目标的值 t[i] 的范围为0到1之间.
+* 带有 Logits 的二元交叉熵 **binary_cross_entropy_with_logits** :BCEWithLogitsLoss损失函数把 Sigmoid 层集成到了 BCELoss 类中. 该版比用一个简单的 Sigmoid 层和 BCELoss 在数值上更稳定, 因为把这两个操作合并为一个层之后, 可以利用 log-sum-exp 的 技巧来实现数值稳定.
+* 散度损失 **kl_div** :KL 散度可用于衡量不同的连续分布之间的距离, 在连续的输出分布的空间上(离散采样)上进行直接回归时 很有效。
+* 连接时序分类损失 **ctc_loss** :可以对没有对齐的数据进行自动对齐，主要用在没有事先对齐的序列化数据训练上。比如语音识别、ocr识别等。
+* 负对数似然损失 **nll_loss** :用于训练 C 个类别的分类问题。
+* 目标值为泊松分布的负对数似然损失 **poisson_nll_loss**
+* 目标值为高斯分布的负对数似然损失 **gaussian_nll_loss**
+
+### 实用函数接口 nn.functional
+nn.functional（通常简写为 F），包含了许多可以直接作用于张量上的函数，它们实现了与层对象相同的功能，但不具有参数保存和更新的能力。例如，可以使用 F.relu() 直接进行 ReLU 操作，或者 F.conv2d() 进行卷积操作。
+
 # pytorch_lightning模块
 Pytorch Lightning 是一个基于PyTorch的高级深度学习框架，旨在将科研代码的灵活性与工程化最佳实习结合，通过标准化训练流程大幅减少模板代码。它的核心思想是，将**学术代码**（模型定义、前向/反向传播、优化器、验证等）和**工程代码**（for-loop、保存、tensorboard日志、训练策略等）解耦开来，使得代码更加简洁。  
 
@@ -96,3 +146,24 @@ Pytorch Lightning 是一个基于PyTorch的高级深度学习框架，旨在将�
 模型权重文件格式转换：`.pt`, `.onnx`, `ckpt` 
 
 # loguru模块
+Loguru 是一个用于 Python 的强大且易用的日志记录库，旨在简化日志记录过程，同时提供丰富的功能和灵活性。
+* 安装：pip install loguru
+* 使用：**from loguru import logger**
+
+主要功能：
+* 简单易用：只需几行代码即可开始记录日志，无需复杂的配置。
+* 丰富的日志级别：支持多种日志级别（DEBUG、INFO、WARNING、ERROR、CRITICAL），便于分类和过滤日志信息。
+* 灵活的日志输出：支持将日志输出到控制台、文件、远程服务器等多种目标。
+* 自动轮转日志文件：支持基于时间或文件大小自动轮转日志文件，便于日志管理。
+* 结构化日志：支持 JSON 格式的结构化日志，便于日志分析。
+* 异常捕获：内置异常捕获功能，自动记录未处理的异常信息。
+* 线程安全：设计为线程安全，适用于多线程应用程序。	
+
+## 关于PyCharm
+&emsp;&emsp;`<2025.2.18>` 遇到很傻逼的问题，在cmd中使用pip install会根据系统安装到指定文件夹，而在PyCharm的命令行中使用pip install会安装到C盘的用户站中。建议以后都用cmd去安装python包。(当你不需要虚拟环境时)
+&emsp;&emsp;解决方案:确定了是IDE的问题，进入IDE后会直接进入conda环境，而安装文件的路径也是conda的安装路径，在cmd中使用的是python的安装路径。如果不希望conda自动激活`base`环境，可以修改conda的配置：
+1. 打开终端，运行以下命令：
+   ```bash
+   conda config --set auto_activate_base false
+   ```
+2. 重启终端或 IDE，Conda 将不再自动激活 base 环境。
