@@ -153,15 +153,15 @@ rosrun tf2_tools view_frames.py
 ### ROS消息包
 #### 标准消息包std_msgs
 |基础类型|数组类型|结构体类型|
-| :--- | :--- | :--- |
-|`bool`||`colorRGBA`|
+| --- | --- | --- |
+|`bool`|/|`colorRGBA`|
 |`byte`|`byteMultiArray`|`duration`|
-|`char`||`time`|
-|`string`||`header`|
+|`char`|/|`time`|
+|`string`|/|`header`|
 |`int8`,`int16`,`int32`,`int64`|`int8MultiArray`,`int16MultiArray`,`int32MultiArray`,`int64MultiArray`|`MultiArrayDimension`|
 |`uint8`,`uint16`,`uint32`,`uint64`|`uint8MultiArray`,`uint16MultiArray`,`uint32MultiArray`,`uint64MultiArray`|`MultiArrayLayout`|
-|`float32`,`float64`|`float32MultiArray`,`float64MultiArray`||
-|`empty`|||
+|`float32`,`float64`|`float32MultiArray`,`float64MultiArray`|/|
+|`empty`|/|/|
 #### 几何消息包geometry_msgs
 * 加速度：`Accel`,`AccelStamped`,`AccelWithCovariance`,`AccelWithCovarianceStamped`
 * 惯量：`Inertia`,`InertiaStamped`
@@ -173,7 +173,7 @@ rosrun tf2_tools view_frames.py
 * 空降方向：`Twist`,`TwistStamped`,`TwistWithCovariance`,`TwistWithCovarianceStamped`
 * 三维矢量：`Vector3`,`Vector3Stamped`
 * 扭矩：`Wrench`,`WrenchStamped`
-#### 自我诊断消息包diagnostric_msgs
+#### 自我诊断消息包diagnostic_msgs
 #### 传感器消息包sensor_msgs
 * 激光雷达：`LaserScan`,`PointCloud2`,`LaserEcho`,`MultiEchoLaserScan`
 * 单点测距：`Range`

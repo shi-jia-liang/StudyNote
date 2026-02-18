@@ -71,5 +71,6 @@ add_library(<target> SHARED <source_files>...)
 虽然CMakeLists中的目标还是add_library，但是中间多了一个SHARED关键字。就是这个关键字，我们会发现最终生成的是`.so文件`，而不是.a文件。
 
 两者的差别在于静态库每次被调用都会生成一个副本，而共享库则只有一个副本，更省空间。
+
 ### 安装文件
 出现`cmake_install.cmake`文件，允许使用`sudo make install`命令将生成的库文件安装到默认路径下`/usr/local/include/`（可以修改安装路径，需要自行查找相关资料）。同时，也可以通过`sudo make uninstall`命令卸载当前库，或者进入安装路径下手动删除。

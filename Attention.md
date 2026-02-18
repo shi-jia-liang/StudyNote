@@ -1,5 +1,5 @@
 # Transformer类架构
-![Transformer model](./img/Transformer.jpg)
+![Transformer model](./img/Attention/Transformer.jpg)
 
 该模型的输入和输出遵循**相同尺寸**的原则，因此能无限层叠。
 

@@ -16,7 +16,7 @@
 ##  深度学习 Deep Learning
 ### 神经网络 Neural Network
 #### Pytorch 和 TensorFlow
-![深度学习架构](./img/deeplearn.PNG)
+![深度学习架构](./img/MachineLearning/DeepLearning.PNG)
 * Pytorch Tensor
 * 图像处理的常见通道排序:`[B, C, H, W]`
   * batch(B)：一批图像的数量
@@ -86,7 +86,7 @@ CNN非常强大，但被**归纳偏置**限制，即模型被迫对数据做出�
 #### GAN对抗生成网络
 #### 转置卷积 与 双线性插值
 &emsp;&emsp;转置卷积不是卷积的逆运算，转置卷积也是卷积。它能将2x2矩阵变换成4x4矩阵。
-![转置卷积](./img/ConvTranspose2d.PNG)
+![转置卷积](./img/MachineLearning/ConvTranspose2d.PNG)
 &emsp;&emsp;转置卷积的运算步骤：
 * 在输入特征图元素间填充`s-1`行，列`0`
 * 在输入特征图四周填充`k-p-1`行，列`0`
@@ -107,7 +107,7 @@ $W_{out} = (W_{in}-1) * stride[1] - 2 * padding[1] + dilation[1] * (kernel\_size
 
 #### 全卷积网络FCN
 &emsp;&emsp;将最后的全连接层替换成卷积层，实现像素级预测。卷积层具有平移不变性，且无规定的输入大小。下采样能减少计算量，但会丢失细节。
-![FCN网络](./img/FCN.JPG)
+![FCN网络](./img/MachineLearning/FCN.jpg)
 &emsp;&emsp;因此，经过pool5后进行上采样的FCN-32s模型准确率并不高；经过pool3后进行上采样并与之前图像融合后的FCN-8s模型准确率最高。
 
 #### LargeFOV
@@ -121,7 +121,7 @@ $W_{out} = (W_{in}-1) * stride[1] - 2 * padding[1] + dilation[1] * (kernel\_size
 #### CRF（Conditional Random Field，条件随机场）
 &emsp;&emsp;核心思想：基于像素间空间关系优化分割结果，提升边界精度。优化分割边界。
 #### ASPP模块
-![ASPP模块](./img/ASPP.PNG)
+![ASPP模块](./img/MachineLearning/ASPP.PNG)
 &emsp;&emsp;核心思想：并行多分支结构捕获多尺度上下文信息。并行多尺度上下文建模。  
 &emsp;&emsp;ASPP模块用于多尺度特征提取的关键部分。ASPP应该包含多个并行的卷积层，每个卷积层有不同的膨胀率（dilation rate），这样可以捕获不同尺度的上下文信息。此外，还有一个全局平均池化层，用于捕捉图像级别的特征，最后将所有分支的特征拼接起来，再通过一个投影层得到最终的输出。  
 
