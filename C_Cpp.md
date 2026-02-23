@@ -18,12 +18,12 @@ pacman -S --needed base-devel mingw-w64-x86_64-toolchain mingw-w64-x86_64-cmake 
 ```
 
 * 添加环境变量  
-![环境变量](./img/C_CPP/EnvironmentVariables.PNG)
+![环境变量](./Img/C_CPP/EnvironmentVariables.png)
 
 ### 安装CMake
 * 按照[CMake](https://cmake.org/download/)网站提供的msi文件安装  
 
-![CMake官网](./img/C_CPP/CMake.PNG)
+![CMake官网](./Img/C_CPP/CMake.png)
 
 ### 安装OpenCV
 此为C/C++语言环境安装OpenCV，首先打开CMake-gui。([可按照此篇文档进行安装](https://blog.csdn.net/SirClown/article/details/142614854))

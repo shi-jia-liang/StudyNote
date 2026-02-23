@@ -144,7 +144,7 @@ PV->BEV：在图片上感知，得到目标坐标点，再经坐标变换，投�
 
 ### BEVFormer
 BEVFormer，乃至端到端算法的里程碑   
-![BEVFormer](./img/End-to-End_Autonomous_Driving/BEVFormer.PNG)
+![BEVFormer](./Img/End-to-End_Autonomous_Driving/BEVFormer.png)
 
 基于BEV的Transformer，重心在于如何处理BEV特征，可接下游任何的感知任务
 
@@ -179,7 +179,7 @@ BEV感知的基本架构：传感器 -> 基础backbone提取特征 -> 构建BEV�
 `Denoising Diffusion Probabilistic Models`（NIPS 2020）是Diffusion Model开山制作，一句撼动了GAN在图像生成领域的霸主地位。
 训练一个模型，输入为噪声图像和step数量，预测噪声的参数  
 
-![Denoising Diffusion Probabilistic Models](./img/End-to-End_Autonomous_Driving/DenoisingDiffusionProbabilisticModels.PNG)
+![Denoising Diffusion Probabilistic Models](./Img/End-to-End_Autonomous_Driving/DenoisingDiffusionProbabilisticModels.png)
 
 生成阶段
 1. 给定一个纯噪声图和初始step数
